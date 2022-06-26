@@ -50,6 +50,7 @@ async function main(receiverName: string, receiverEmail: string, image: any) {
 
     return true;
   } catch (e) {
+    console.log(e);
     return false;
   }
 }
@@ -65,23 +66,29 @@ export default async function handler(
     case 'GET':
       break;
     case 'POST':
-      const sendResult = await main(
-        body.addressee,
-        body.addresseeEmail,
-        body.image
-      );
+      try {
+        const sendResult = await main(
+          body.addressee,
+          body.addresseeEmail,
+          body.image
+        );
+        console.log(sendResult);
 
-      if (!sendResult)
-        return res.json({
-          success: false,
-          desc: 'mailFailure',
+        if (!sendResult)
+          return res.json({
+            success: false,
+            desc: 'mailFailure',
+          });
+
+        await Post.findOneAndUpdate({ _id: body._id }, { status: 'D' });
+
+        res.json({
+          success: true,
         });
+      } catch (error) {
+        console.log(error);
+      }
 
-      await Post.findOneAndUpdate({ _id: body._id }, { status: 'D' });
-
-      res.json({
-        success: true,
-      });
       break;
 
     default:
