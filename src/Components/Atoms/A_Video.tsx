@@ -24,6 +24,7 @@ function A_Video({ src, loop }: Props_A_Video) {
       autoPlay={true}
       controls={false}
       muted={true}
+      playsInline={true}
     ></StyledVideo>
   );
 }
