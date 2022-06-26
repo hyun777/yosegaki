@@ -273,7 +273,7 @@ export async function getServerSideProps(context: any) {
   const id = context.params.id;
 
   const { data } = await axios.get(
-    `https://yosegaki.vercel.app//api/post/${id}`
+    `https://yosegaki.vercel.app/api/post/${id}`
   );
 
   if (!data.success)

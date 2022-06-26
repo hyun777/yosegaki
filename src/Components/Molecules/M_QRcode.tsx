@@ -21,7 +21,7 @@ export interface Props_M_QRcode {
 
 function M_QRcode({ onClick }: Props_M_QRcode) {
   const router = useRouter();
-  const url = `http://127.0.0.1:3000/${router.query.id}`;
+  const url = `https://yosegaki.vercel.app/${router.query.id}`;
 
   useEffect(() => {
     const addEscClose = (e: any) => {
