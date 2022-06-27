@@ -38,10 +38,15 @@ export default async function handler(
     case 'PATCH':
       try {
         const result2 = await Post.findOneAndUpdate(
-          { _id: id },
+          { _id: id, status: 'A' },
           { $push: { comments: body } },
           { new: true }
         );
+
+        if (result2 === null)
+          return res.json({
+            success: false,
+          });
 
         res.json({
           success: true,
@@ -56,8 +61,8 @@ export default async function handler(
 
     case 'DELETE':
       try {
-        await Post.findByIdAndUpdate(
-          { _id: id },
+        const result3 = await Post.findByIdAndUpdate(
+          { _id: id, status: 'A' },
           {
             $pull: {
               comments: { _id: body.commentId },
@@ -65,6 +70,11 @@ export default async function handler(
           },
           { safe: true, upsert: true }
         );
+
+        if (result3 === null)
+          return res.json({
+            success: false,
+          });
 
         res.json({
           success: true,

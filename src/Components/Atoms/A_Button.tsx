@@ -42,6 +42,10 @@ const StyledButton = styled.button`
     margin: ${({ theme }) =>
       theme.A_Button.tablet && theme.A_Button.tablet.margin};
     flex: ${({ theme }) => theme.A_Button.tablet && theme.A_Button.tablet.flex};
+
+    &:hover {
+      opacity: 1;
+    }
   }
 `;
 

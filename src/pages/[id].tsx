@@ -138,6 +138,7 @@ const PostPage: NextPage = ({ data }: any) => {
         router.push('/');
       }
     } catch (error) {
+      dispatch(toggleGlobalLoading(false));
       alert('メール送信に失敗しました。');
     }
   }

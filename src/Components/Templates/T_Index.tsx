@@ -19,6 +19,7 @@ const StyledDiv = styled.div`
 
   @media screen and (max-width: 767px) {
     grid-template-rows: 50% 50%;
+    min-height: -webkit-fill-available;
   }
 `;
 

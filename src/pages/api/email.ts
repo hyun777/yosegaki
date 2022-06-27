@@ -72,7 +72,6 @@ export default async function handler(
           body.addresseeEmail,
           body.image
         );
-        console.log(sendResult);
 
         if (!sendResult)
           return res.json({

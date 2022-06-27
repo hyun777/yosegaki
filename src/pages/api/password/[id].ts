@@ -14,7 +14,7 @@ export default async function handler(
 
   switch (req.method) {
     case 'GET':
-      const result = await Post.findOne({ _id: id });
+      const result = await Post.findOne({ _id: id, status: 'A' });
 
       if (result === null) return res.json({ success: false });
 
