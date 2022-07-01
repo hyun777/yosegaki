@@ -1,4 +1,4 @@
-# 寄せ書きゼネレーター
+# 寄せ書きゼネレーター   
 
 ## https://yosegaki.vercel.app/
 
